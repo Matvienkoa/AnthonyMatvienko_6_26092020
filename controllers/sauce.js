@@ -1,6 +1,7 @@
 const Sauce = require('../models/Sauce');
 const fs = require('fs');
 
+// === Middleware création de Sauce ===
 exports.createSauce = (req, res, next) => {
     const sauceObject = JSON.parse(req.body.sauce);
     delete sauceObject._id;
@@ -13,6 +14,7 @@ exports.createSauce = (req, res, next) => {
       .catch(error => res.status(400).json({ error }));
 };
 
+// === Middleware modification de Sauce ===
 exports.modifySauce = (req, res, next) => {
   const sauceObject = req.file ?
     {
@@ -24,6 +26,7 @@ exports.modifySauce = (req, res, next) => {
       .catch(error => res.status(400).json({ error }));
 };
 
+// === Middleware suppression de Sauce ===
 exports.deleteSauce = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })
     .then(sauce => {
@@ -37,18 +40,21 @@ exports.deleteSauce = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
 
+// === Middleware affichage d'une Sauce ===
 exports.getOneSauce = (req, res, next) => {
     Sauce.findOne({ _id: req.params.id })
       .then(sauce => res.status(200).json(sauce))
       .catch(error => res.status(404).json({ error }));
 };
 
+// === Middleware affichage des Sauces ===
 exports.getAllSauces = (req, res, next) => {
     Sauce.find()
       .then(sauces => res.status(200).json(sauces))
       .catch(error => res.status(400).json({ error }));
 };
 
+// === Middleware gestion des likes / dislikes ===
 exports.likeSauce = (req, res, next) => {
   switch (req.body.like) {
       case 1:

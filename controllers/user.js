@@ -4,9 +4,10 @@ const jwt = require('jsonwebtoken');
 const passwordValidator = require('../middleware/passwordValidator');
 const emailValidator = require('email-validator');
 
+// === Middleware Inscription utilisateur ===
 exports.signup = (req, res, next) => {
   if ((!emailValidator.validate(req.body.email)) || (!passwordValidator.validate(req.body.password))) {
-    return res.status(400).json({ error: 'Le mot de Pass doit contenir... blablabla'});
+    return res.status(400).json({ error });
   }
     bcryptjs.hash(req.body.password, 10)
       .then(hash => {
@@ -21,6 +22,7 @@ exports.signup = (req, res, next) => {
       .catch(error => res.status(500).json({ error }));
 };
 
+// === Middleware Connexion utilisateur ===
 exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email })
       .then(user => {
