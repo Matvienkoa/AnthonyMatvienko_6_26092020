@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const helmet = require('helmet');
 const apiLimiter = require('./middleware/express-rate-limit');
+const mongoSanitize = require('express-mongo-sanitize');
 
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
@@ -28,6 +29,8 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
+
+app.use(mongoSanitize());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
