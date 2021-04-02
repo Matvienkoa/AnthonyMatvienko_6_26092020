@@ -14,7 +14,7 @@ From within the project folder, create an .env file and enter the following line
 
 LOGIN=Mentor  
 PASSWORD=OCRoomsP6  
-URL=cluster0.5rox4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+URL=cluster0.5rox4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority  
 
 , Then run npm install. 
 
