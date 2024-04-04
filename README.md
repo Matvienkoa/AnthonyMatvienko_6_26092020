@@ -1,6 +1,18 @@
-# Piquante
+# 6th OCR Web Developer Training Project
 
-This is the back end server for the Project 6 of the Junior Developer path of Openclassrooms.
+![enter image description here](https://github.com/Matvienkoa/AnthonyMatvienko_6_26092020/blob/main/images/logo.PNG?raw=true)
+
+## Goal
+
+Develop the secure backend of a web application using Javascript
+
+## Technology used
+
+Javascript
+
+Node.js
+
+Express
 
 ## Prerequisites
 
